@@ -1,0 +1,82 @@
+@startuml "fr"
+
+title "Quel casque VR choisir ?"
+
+start
+
+switch (Quel est ton budget?)
+    case (1000€ ou plus)
+        if (Ton PC est-il compatible avec la VR ?) is (oui) then
+            label lblalign
+            label lblalign
+            label valveindex
+            label lblalign
+            :Valve Index
+            (1080€);
+            detach
+        else (non)
+            if (Veux-tu mettre à niveau ta machine ?) is (oui) then
+                label lblalign
+                goto valveindex
+            else (non)
+                :Tu peux réduire ton budget :
+                entre 400 et 1000€.;
+                detach
+            endif
+        endif
+    case (entre 400 et 1000€)
+        if (La disponibilité des jeux de Meta (BeatSaber, etc.) ou de VRChat\nest-elle importante pour toi ?) is (non) then
+            label lblalign
+            label lblalign
+            label lblalign
+            label lblalign
+            label lblalign
+            label askwifi
+            if (As-tu un réseau Wi-Fi 6 avec une bande 5GHz ?) is (non / je ne suis pas sûr) then
+                :Pico Neo 3 Link
+                (450€);
+                detach
+            else (oui)
+                :Pico 4
+                (430€);
+                detach
+            endif
+        else (oui)
+            if (Ton PC est-il compatible avec la VR ?) is (oui) then
+                label lblalign
+                goto askwifi
+            else (non)
+                if (As-tu un problème avec Meta/Facebook ?) is (oui) then
+                    :Tu vas malheureusement devoir
+                    mettre à niveau ta machine.;
+                    goto askwifi
+                else (non)
+                    :Meta Quest 2
+                    (450€);
+                endif
+            endif
+        endif
+    case (moins de 400€)
+        :Le marché de l'occasion sera plus adapté à ton budget.
+        Dans un souci hygiène, n'oublie pas d'acheter un masque facial neuf.;
+        if (Ton PC est-il compatible avec la VR ?) is (non) then
+            label lblalign
+            label lblalign
+            label occazq2
+            :Meta Quest 2
+            (350-400€);
+            detach
+        else (oui)
+            if (As-tu un problème avec Meta/Facebook ?) is (non) then
+                label lblalign
+                goto occazq2
+            else (oui)
+                :VIVE Cosmos
+                (250-450€);
+                note right: Attention : ne prends pas\nle VIVE Cosmos Elite !
+                detach
+            endif
+        endif
+endswitch
+
+@enduml

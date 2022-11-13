@@ -1,0 +1,26 @@
+name: Build
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    name: Build diagram
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Process diagram
+        uses: Timmy/plantuml-action@v1
+        with:
+          args: '-tsvg diagrams/*.puml'
+      
+      - name: Upload SVG
+        uses: actions/upload-artifact@v3
+        with:
+          path: 'diagrams/*.svg'
